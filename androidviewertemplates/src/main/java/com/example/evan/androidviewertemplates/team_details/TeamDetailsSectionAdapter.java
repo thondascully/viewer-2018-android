@@ -92,16 +92,9 @@ public class TeamDetailsSectionAdapter extends MultitypeRankingsSectionAdapter {
 
     private String[] createListOnClick = {
             "matches",
-            /*"calculatedData.firstPickAbility",
-            "calculatedData.overallSecondPickAbility",*/
-
     };
 
     private String[] rankInsteadOfGraph = {
-            /*"calculatedData.disabledPercentage",
-            "calculatedData.incapacitatedPercentage",
-            "calculatedData.baselineReachedPercentage",
-            "calculatedData.liftoffPercentage",*/
             "calculatedData.firstPickAbility",
             "calculatedData.overallSecondPickAbility",
             "calculatedData.gearAbility",

@@ -71,8 +71,7 @@ public class MainActivity extends ViewerActivity
 
         context = this.getApplicationContext();
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        /*prefs = getSharedPreferences("prefFile1", Context.MODE_PRIVATE);
-        editor = prefs.edit();*/
+
         fragmentTagNames = new HashMap<>();
         if (v.hasVibrator()) {
             Log.i("Can Vibrate", "YES");
@@ -119,11 +118,6 @@ public class MainActivity extends ViewerActivity
         //todo
         fragmentManager = getSupportFragmentManager();
         prefs = getSharedPreferences("prefFile1", Context.MODE_PRIVATE);
-        /*editor = prefs.edit();
-        if(prefs.contains("key")){
-            Log.e("contains", "key");
-            position = prefs.getInt("id", 0);
-        }*/
         switch (position) {
             default:
             case 0:
@@ -181,7 +175,6 @@ public class MainActivity extends ViewerActivity
         onSectionAttached(position);
         Log.e("title position", position + "");
         restoreActionBar(position);
-//        editor.remove("key").commit();
 
     }
 
@@ -213,8 +206,6 @@ public class MainActivity extends ViewerActivity
     }
     @Override
     public void onDestroy() {
-        /*editor.putString("key", "asdf").apply();
-        Log.e("key", "saved on kill");*/
         super.onDestroy();
 
     }

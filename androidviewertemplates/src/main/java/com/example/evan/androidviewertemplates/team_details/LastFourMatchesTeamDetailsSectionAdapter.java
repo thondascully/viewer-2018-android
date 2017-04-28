@@ -87,19 +87,12 @@ public class LastFourMatchesTeamDetailsSectionAdapter extends MultitypeRankingsS
     };
 
     private String[] createListOnClick = {
-            "matches",
-            /*"calculatedData.firstPickAbility",
-            "calculatedData.overallSecondPickAbility",*/
-
+        "matches"
     };
 
     private String[] rankInsteadOfGraph = {
-            /*"calculatedData.disabledPercentage",
-            "calculatedData.incapacitatedPercentage",
-            "calculatedData.baselineReachedPercentage",
-            "calculatedData.liftoffPercentage",*/
-            "calculatedData.firstPickAbility",
-            "calculatedData.allRotorsAbility"
+        "calculatedData.firstPickAbility",
+        "calculatedData.allRotorsAbility"
 
     };
 

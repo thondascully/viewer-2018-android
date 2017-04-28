@@ -158,39 +158,6 @@ public class TeamDetailsActivity extends ViewerActivity {
             Log.e("test", "ERROR: " + e.getMessage());
         }
     }
-    /*public void getImage(final ImageView view){
-        final StorageRef imageRef = storageRef.child(userId).child(title).child("image1");
-        imageRef.getBytes(Constants.ONE_MEGABYTE).addOnCompleteListener(new OnCompleteListener<byte[]>() {
-            @Override
-            public void onComplete(@NonNull Task<byte[]> task) {
-                Log.e("completion", "SUCCCESS!");
-
-                imageRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        Log.e("bytes", "SUCCESS");
-                        BitmapFactory.Options options = new BitmapFactory.Options();
-                        options.inScaled = false;
-                        options.inJustDecodeBounds = false;
-                        options.inDither = false;
-                        options.inSampleSize = 0;
-                        options.inScaled = false;
-                        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-                        displayBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
-                        Log.e("bitmap", displayBitmap.toString());
-                        view.setImageBitmap(displayBitmap);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle any errors
-                        Log.e("getting image", "failed");
-                    }
-                });
-            }
-        });
-    }*/
-
 
     @Override
     protected void onDestroy() {

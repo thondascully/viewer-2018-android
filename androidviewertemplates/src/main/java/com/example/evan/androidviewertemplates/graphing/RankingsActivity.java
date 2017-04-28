@@ -27,25 +27,19 @@ public class RankingsActivity extends ViewerActivity {
         setContentView(R.layout.activity_rankings);
         Log.e("In rankings Activity", "true");
         String field = getIntent().getStringExtra("field");
-        //Log.e("graphing field", field);
         setTitle(SpecificConstants.KEYS_TO_TITLES.get(field));
-        //Log.e("setTitle", SpecificConstants.KEYS_TO_TITLES.get(field));
         context = this;
         setActionBarColor();
 
         Fragment fragment = new graphingFrag();
         Bundle argumentsBundle = new Bundle();
         argumentsBundle.putString("field", SpecificConstants.DATA_TO_GRAPH.get(getIntent().getStringExtra("field")));
-        //Log.e("bundleFieldString", SpecificConstants.DATA_TO_GRAPH.get(getIntent().getStringExtra("field")));
         argumentsBundle.putInt("team", getIntent().getIntExtra("team", 0));
-        //Log.e("bundleTeam", Integer.toString(getIntent().getIntExtra("team", 0)));
         argumentsBundle.putBoolean("displayAsPercentage", getIntent().getBooleanExtra("displayAsPercentage", false));
-        //Log.e("bundlePercentageBool", String.valueOf(getIntent().getBooleanExtra("displayAsPercentage", false)));
         fragment.setArguments(argumentsBundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.rankingsLinearLayout, fragment, "").commit();
-        //Log.e("after transaction", "true");
 
     }
     public void setActionBarColor(){
