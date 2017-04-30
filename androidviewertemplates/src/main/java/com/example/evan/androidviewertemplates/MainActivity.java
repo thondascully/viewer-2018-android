@@ -104,13 +104,6 @@ public class MainActivity extends ViewerActivity
         }
     }
 
-    public Integer getSavedPosition() {
-        Integer position;
-        position = prefs.getInt("id", 0);
-        Log.e("intial saved position", position + "");
-        return position;
-    }
-
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
