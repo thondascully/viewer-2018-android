@@ -14,6 +14,7 @@ public class TeamInMatchData extends com.example.evan.androidviewertools.firebas
     public ArrayList<String> scoutName; //<---So sketchy on firebase
     public Boolean didLiftoff;
     public Boolean didStartDisabled;
+    public Boolean didGetDisabled; //<---wasnt there before
     public Boolean didBecomeIncapacitated;
     public Integer rankSpeed;
     public Integer rankAgility;
@@ -28,6 +29,7 @@ public class TeamInMatchData extends com.example.evan.androidviewertools.firebas
     public Integer numGearsFumbledAuto;
     public Integer numGearsEjectedAuto;
     public Integer numHoppersOpenedAuto;
+    public Integer numHoppersUsedAuto;//<---wasnt there before
     public Boolean didReachBaselineAuto;
     public Boolean didReachBaseLineAuto;
     public Boolean didPotentiallyConflictingAuto;
@@ -37,11 +39,14 @@ public class TeamInMatchData extends com.example.evan.androidviewertools.firebas
     //TELE
     public Map<String, Integer> gearsPlacedByLiftTele;
     public Map<String, Boolean> hoppersOpenedTele;
+    public Integer numGroundGearIntakesTele;//<---wasnt there before
     public Integer numGearGroundIntakesTele;
     public Integer numGearLoaderIntakesTele;
+    public Integer numHumanGearIntakesTele;//<---wasnt there before
     public Integer numGearsFumbledTele;
     public Integer numGearsEjectedTele;
     public Integer numHoppersOpenedTele;
+    public Integer numHoppersUsedTele;//<---wasnt there before
     public Float liftoffTime;
     public ArrayList<Map<String, Object>> highShotTimesForBoilerTele;
     public ArrayList<Map<String, Object>> lowShotTimesForBoilerTele;
