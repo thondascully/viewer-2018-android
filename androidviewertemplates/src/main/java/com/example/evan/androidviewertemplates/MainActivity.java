@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+//Release Branch
 public class MainActivity extends ViewerActivity
         implements SpecificNavigationDrawerFragment.NavigationDrawerCallbacks {
 
