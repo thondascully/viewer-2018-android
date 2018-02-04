@@ -142,8 +142,8 @@ public class CalculatedTeamData extends Object {
     public Float RScoreAgility;
     public Float RScoreDrivingAbility;
 
-    //public Float switchFailPercentageAuto;
-    //public Float switchFailPercentageTele;
+    public Float switchFailPercentageAuto;
+    public Float switchFailPercentageTele;
     public Boolean canScoreBothSwitchSidesAuto;
     public Integer actualSeed;
     public Integer predictedSeed;

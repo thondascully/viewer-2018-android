@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
@@ -90,10 +91,28 @@ public class MainActivity extends ViewerActivity
         Log.e("test", "Logcat is up!");
         broadcastListener();
 
-
-/*        ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "Esketit",
-                "Loading. Please wait...", true);*/
     }
+
+
+  /*      final ProgressDialog progress = new ProgressDialog(this);
+        progress.setTitle("Loading");
+        progress.setMessage("Please wait while the device loads... If asked to close, press 'wait'");
+        progress.show();
+
+
+        Runnable progressRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+                progress.cancel();
+            }
+        };
+
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 15000);
+}*/
+
+
     public void initializeDrawer(){
         mNavigationDrawerFragment = (SpecificNavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
