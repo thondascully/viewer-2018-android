@@ -32,7 +32,7 @@ public class SpecificConstants extends Constants {
                     put ("calculatedData.allianceSwitchFailPercentageAuto","Switch Fail Percentage Auto");
                     put ("calculatedData.scaleFailPercentageAuto","Scale Fail Percentage Auto");
                     put ("calculatedData.avgAllianceSwitchCubesAuto","Avg Cubes In Alliance Switch Auto");
-
+/
                     //Teleop
                     put ("calculatedData.avgCubesSpilledTele","Avg Cubes Spilled Tele");
                     put ("calculatedData.avgNumCubesFumbledTele","Avg Cubes Fumbled Tele");
