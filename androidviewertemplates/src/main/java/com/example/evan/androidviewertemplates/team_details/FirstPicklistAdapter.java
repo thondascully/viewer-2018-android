@@ -23,16 +23,18 @@ import java.util.Map;
 
 public class FirstPicklistAdapter extends BaseAdapter {
     Context context;
-    ArrayList<DataSnapshot> list;
-    public FirstPicklistAdapter(Context context, Map<String,Integer> list) {
+    Map<String,Integer> teams;
+
+    public FirstPicklistAdapter(Context context, Map<String,Integer> teams) {
         super();
         this.context = context;
+        this.teams = teams;
 
 
     }
     @Override
     public int getCount(){
-        return list.size();
+        return teams.size();
     }
 
 
@@ -51,17 +53,17 @@ public class FirstPicklistAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         //Message message = myArrayList.get(position);
 
-        /*LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View myLayout = inflater.inflate(R.layout.firstpicklistcelllayout, null);
         TextView teamNumber = (TextView) myLayout.findViewById(R.id.teamNumber);
-        String team = list.get(position).child("number").getValue().toString();
+        String team = teams.get(position).toString();
         teamNumber.setText(team);
 
         TextView rankNumber = (TextView) myLayout.findViewById(R.id.rankNumber);
 
-        rankNumber.setText(...); // <--- SET POSITION ON FIREBASE - PICKLIST
-        convertView = myLayout;*/
+        rankNumber.setText("4343"); // <--- SET POSITION ON FIREBASE - PICKLIST
+        convertView = myLayout;
 
         return convertView;
     }
