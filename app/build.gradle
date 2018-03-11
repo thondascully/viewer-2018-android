@@ -39,7 +39,9 @@ dependencies {
     compile project(':androidviewertemplates')
     compile project(':androidviewertools')
     //compile 'com.google.firebase:firebase-core:10.2.0'
-    compile 'com.google.firebase:firebase-database:9.0.2'
+    //compile 'com.google.firebase:firebase-database:9.0.2'
+    compile 'com.google.firebase:firebase-core:11.4.0'
+    compile 'com.google.firebase:firebase-database:11.4.0'
     compile 'com.google.firebase:firebase-storage:9.0.2'
     compile 'com.google.firebase:firebase-auth:9.0.1'
 
