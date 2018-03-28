@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,23 +21,45 @@ import android.widget.Toast;
 
 import com.example.evan.androidviewertemplates.MainActivity;
 import com.example.evan.androidviewertemplates.R;
+import com.example.evan.androidviewertemplates.utils.SpecificConstants;
 import com.example.evan.androidviewertools.ViewerActivity;
+import com.example.evan.androidviewertools.team_ranking.TeamRankingsFragment;
 import com.example.evan.androidviewertools.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
-public class
-TeamRankingsActivity extends ViewerActivity {
+public class TeamRankingsActivity extends ViewerActivity {
+    TeamRankingsFragment fragment;
 
-    public MenuItem lastMenuItem;
+    static List<String> menuSortOptions;
+    static Set<String> shouldBeNotReversed;
+
+    static {
+        menuSortOptions = Arrays.asList("number", "calculatedData.actualSeed", "calculatedData.firstPick", "calculatedData.secondPick");
+
+        shouldBeNotReversed = new HashSet<>();
+        shouldBeNotReversed.add("number");
+        shouldBeNotReversed.add("calculatedData.actualSeed");
+    }
+
     @Override
     public void onCreate() {
         setContentView(R.layout.activity_team_rankings);
-        refreshPage();
+
+        this.fragment = getFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.teamRankingsActivityRelativeLayout, this.fragment, "").commit();
+
         setActionBarColor();
     }
+
     public void setActionBarColor(){
         ActionBar actionBar = getSupportActionBar();
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#65C423"));
@@ -45,95 +68,26 @@ TeamRankingsActivity extends ViewerActivity {
         }
     }
 
-    public void refreshPage(){
-        Fragment fragment = getFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.teamRankingsActivityRelativeLayout, fragment, "").commit();
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_rankings, menu);
+        for (int i = 0; i < menuSortOptions.size(); ++i) {
+            String optionName = "By " + SpecificConstants.KEYS_TO_TITLES.get(this.menuSortOptions.get(i));
+            menu.add(Menu.NONE, i, i, optionName);
+        }
+
         return true;
     }
-    public void setAllSortConstantsFalse(){
-        Constants.sortByTeamNumber = false;
-        Constants.sortByRank = false;
-        Constants.sortByFirstPick = false;
-        Constants.sortBySecondPick = false;
-        Constants.sortByLfm = false;
-    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        setAllSortConstantsFalse();
-        if (id == R.id.byNumber) {
-            Log.e("number", "clicked");
-            setColorOfItem(item);
-            lastMenuItem = item;
-            setAllSortConstantsFalse();
-            Constants.sortByTeamNumber = true;
-            refreshPage();
-            return true;
-        }
-        if (id == R.id.byRank){
-            Log.e("sort by number", String.valueOf(Constants.sortByTeamNumber));
-            Log.e("Rank", "clicked");
-            setColorOfItem(item);
-            lastMenuItem = item;
-            setAllSortConstantsFalse();
-            Constants.sortByRank = true;
-            refreshPage();
-            return true;
-        }
-        if (id == R.id.byFirstPick){
-            Log.e("first pick", "clicked");
-            setColorOfItem(item);
-            lastMenuItem = item;
-            setAllSortConstantsFalse();
-            Constants.sortByFirstPick = true;
-            refreshPage();
-            return true;
-        }
-        if (id == R.id.bySecondPick){
-            Log.e("second pick", "clicked");
-            setColorOfItem(item);
-            lastMenuItem = item;
-            setAllSortConstantsFalse();
-            Constants.sortBySecondPick = true;
-            refreshPage();
-            return true;
-        }
-        if (id == R.id.byLfm){
-            Log.e("LFM", "clicked");
-            setColorOfItem(item);
-            lastMenuItem = item;
-            setAllSortConstantsFalse();
-            Constants.sortByLfm = true;
-            refreshPage();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-
+        String key = this.menuSortOptions.get(id);
+        this.fragment.orderByField(key, shouldBeNotReversed.contains(key));
+        return true;
     }
 
-    public void setColorOfItem(MenuItem item){
-        if(lastMenuItem!= null) {
-            SpannableString s1 = new SpannableString(lastMenuItem.getTitle());
-            s1.setSpan(new ForegroundColorSpan(Color.BLACK), 0, s1.length(), 0);
-            lastMenuItem.setTitle(s1);
-        }
-        SpannableString s2 = new SpannableString(item.getTitle());
-        s2.setSpan(new ForegroundColorSpan(Color.GRAY), 0, s2.length(), 0);
-        item.setTitle(s2);
-    }
-
-
-    public Fragment getFragment() {
-        Fragment fragment = new TeamRankingsActivityFragment();
+    public TeamRankingsFragment getFragment() {
+        TeamRankingsFragment fragment = new TeamRankingsActivityFragment();
         Bundle arguments = new Bundle();
         arguments.putString("field", getIntent().getStringExtra("field"));
         Log.e("field",getIntent().getStringExtra("field"));

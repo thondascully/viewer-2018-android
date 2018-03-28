@@ -10,7 +10,6 @@ import com.example.evan.androidviewertools.search_view.SearchableListFragment;
 
 
 public abstract class TeamRankingsFragment extends SearchableListFragment {
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -34,4 +33,9 @@ public abstract class TeamRankingsFragment extends SearchableListFragment {
         return Constants.TEAM_SCOPES;
     }
     public abstract Intent getTeamDetailsActivityIntent();
+
+    public void orderByField(String field, boolean isNotReversed) {
+        TeamRankingsAdapter teamRankingsAdapter = (TeamRankingsAdapter)getListAdapter();
+        teamRankingsAdapter.orderByField(field, isNotReversed);
+    }
 }

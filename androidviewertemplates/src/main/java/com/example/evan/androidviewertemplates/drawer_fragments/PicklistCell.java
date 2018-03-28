@@ -26,18 +26,10 @@ import java.util.Map;
  */
 
 public class PicklistCell extends RelativeLayout {
-    private String dataName;
-    private int max;
-    private int min;
     Context context;
     String teamNumber;
     Integer teamPicklistPosition;
     String teamNumberValue;
-    String teamPositionValue;
-    String positionTextView;
-    Button downButton;
-    Button upButton;
-    String string;
     Map<String, Integer> map = new HashMap<>();
 
     public PicklistCell(Context context, String teamNumber, Integer teamPicklistPosition) {
@@ -47,7 +39,6 @@ public class PicklistCell extends RelativeLayout {
         this.teamPicklistPosition = teamPicklistPosition;
         this.context = context;
         teamNumberValue = Constants.picklistMap.get(teamNumber);
-        //teamPositionValue = Constants.picklistMap.get();
 
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

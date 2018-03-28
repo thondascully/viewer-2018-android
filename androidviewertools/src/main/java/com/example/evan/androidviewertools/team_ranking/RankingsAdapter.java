@@ -19,28 +19,21 @@ import java.util.List;
 public abstract class RankingsAdapter<T> extends SearchableFirebaseListAdapter<T> {
     private String rankFieldName;
     private String valueFieldName;
+    private boolean isNotReversed;
 
     public RankingsAdapter(Context context, String rankFieldName, String valueFieldName, boolean isNotReversed) {
         super(context, new ObjectFieldComparator(rankFieldName, isNotReversed));
+        this.isNotReversed = isNotReversed;
         this.rankFieldName = rankFieldName;
         this.valueFieldName = valueFieldName;
-
-
     }
 
-    @Override
-    public int getCount() {
-        return filteredValues.size();
+    public void orderByField(String orderField, boolean isNotReversed) {
+        setFilterComparator(new ObjectFieldComparator(orderField, isNotReversed));
     }
 
-    @Override
-    public Object getItem(int position) {
-        return filteredValues.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
+    public void orderByRank() {
+        orderByField(this.rankFieldName, this.isNotReversed);
     }
 
     @Override

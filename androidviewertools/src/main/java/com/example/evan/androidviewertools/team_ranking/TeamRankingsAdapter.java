@@ -22,7 +22,6 @@ public abstract class TeamRankingsAdapter extends RankingsAdapter<Team> {
 
     @Override
     public boolean filter(Team value, String scope) {
-
             String teamNumberString = value.number.toString();
             return teamNumberString.indexOf(searchString) == 0;
     }
@@ -63,11 +62,12 @@ public abstract class TeamRankingsAdapter extends RankingsAdapter<Team> {
     @Override
     public void respondToClick(String valueTitle) {
         Integer teamNumberClicked = Integer.parseInt(valueTitle);
-        Intent teamDetailsViewIntent = getTeamDetailsActivityIntent();
-        teamDetailsViewIntent.putExtra("teamNumber", teamNumberClicked);
-        teamDetailsViewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        onClick(teamNumberClicked);
+//        Intent teamDetailsViewIntent = getTeamDetailsActivityIntent();
+//        teamDetailsViewIntent.putExtra("teamNumber", teamNumberClicked);
+//        teamDetailsViewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        context.startActivity(teamDetailsViewIntent);
+//        context.startActivity(teamDetailsViewIntent);
     }
 
     @Override
@@ -75,5 +75,7 @@ public abstract class TeamRankingsAdapter extends RankingsAdapter<Team> {
         return new ArrayList<Object>(FirebaseLists.teamsList.getValues());
     }
 
+    public abstract void onClick(Integer teamNumber);
+
     public abstract Intent getTeamDetailsActivityIntent();
-}
+}e

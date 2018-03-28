@@ -234,7 +234,6 @@ public class TeamDetailsSectionAdapter extends MultitypeRankingsSectionAdapter {
             }
             String[] splitName = fieldName.split("\\.");
             Constants.rankFilterName = splitName[1];
-            Log.e("FIELD NAME", Constants.rankFilterName);
             intent.putExtra("teamNumber", teamNumber).putExtra("field", fieldName)
                     .putExtra("displayValueAsPercentage", Arrays.asList(getPercentageFields()).contains(getRowItem(section,row)));
             context.startActivity(intent);
